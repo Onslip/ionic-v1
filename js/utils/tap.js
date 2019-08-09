@@ -386,7 +386,9 @@ function tapMouseUp(e) {
   //console.log("mouseup " + Date.now());
   if (tapEnabledTouchEvents) {
     e.stopPropagation();
-    e.preventDefault();
+    if (!ionic.tap.isTextInput(e.target) || tapLastTouchTarget !== e.target) {
+      e.preventDefault();
+    }
     return false;
   }
 
