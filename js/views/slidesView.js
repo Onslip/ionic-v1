@@ -1279,6 +1279,7 @@
                 if (!findElementInEvent(e, s.params.swipeHandler)) return;
             }
 
+            if (e.type === 'touchmove' && !e.targetTouches[0]) return;
             var startX = s.touches.currentX = e.type === 'touchstart' ? e.targetTouches[0].pageX : e.pageX;
             var startY = s.touches.currentY = e.type === 'touchstart' ? e.targetTouches[0].pageY : e.pageY;
 
@@ -1320,6 +1321,7 @@
                 // isMoved = true;
                 s.allowClick = false;
                 if (isTouched) {
+                    if (e.type === 'touchmove' && !e.targetTouches[0]) return;
                     s.touches.startX = s.touches.currentX = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
                     s.touches.startY = s.touches.currentY = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
                     touchStartTime = Date.now();
@@ -1338,6 +1340,7 @@
             }
             if (e.targetTouches && e.targetTouches.length > 1) return;
 
+            if (e.type === 'touchmove' && !e.targetTouches[0]) return;
             s.touches.currentX = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
             s.touches.currentY = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
 
